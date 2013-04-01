@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package antsim;
 
 /**
  *
- * @author loandy
+ * @author Andy Lo
  */
-public interface WorkerBehavior
-{
-    public void workerBehavior(Map map);
+public class Position {
+    public int x;
+    public int y;
 }

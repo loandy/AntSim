@@ -2,45 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package antsim;
-
-import java.util.ArrayList;
 
 /**
  *
- * @author loandy
+ * @author Andy Lo
  */
-public abstract class Worker extends Ant implements WorkerBehavior
-{
-    public void workerBehavior(Map map) {
-        // Behavioral event flags.
-        boolean foundFood = true;
-        boolean attacked = true;
+public class Worker extends Ant {
+    public Worker(World w, int x, int y) {
+        this.world = w;
+        this.position = new Position();
+        this.setPosition(x, y);
 
-        ArrayList<Entity> senseResult = this.sense(map);
-
-        System.out.print("\n");
-        for(Entity e : senseResult)
-        {
-            if (e instanceof Food)
-            {
-                // BEGIN DEBUG CODE
-                System.out.println("Ant " + this + " has found food.");
-                // END DEBUG CODE
-                this.grab(map, e);
-                this.sense(map);
-                this.returnToColony(map);
-            }
-        }
-        System.out.print("\n");
-    }
-
-    public void returnToColony(Map map)
-    {
-        boolean atColony = false;
-        // BEGIN DEBUG CODE
-        System.out.println("Ant " + this + " is returning to colony.");
-        // END DEBUG CODE
+        System.out.println(this + " created at (" + this.position.x
+            + ", " + this.position.y + ") in world " + this.world + ".");
     }
 }

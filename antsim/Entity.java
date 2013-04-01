@@ -2,26 +2,32 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package antsim;
 
 /**
  *
- * @author loandy
+ * @author Andy Lo
  */
-public abstract class Entity
-{
+public abstract class Entity {
     protected int energy;
-    protected int[] position = new int[2];
+    protected World world;
+    protected Position position;
 
-    public Entity()
-    {
-        // BEGIN DEBUG CODE
-        System.out.println("Entity " + this + " created.");
-        // END DEBUG CODE
+    public int getEnergy() {
+        return this.energy;
     }
 
-    public abstract int[] getPosition();
-    public abstract int getEnergy();
-    public abstract void setPosition(int x, int y);
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public void setEnergy(int e) {
+        this.energy = e;
+    }
+
+    public void setPosition(int x, int y) {
+        this.position.x = x;
+        this.position.y = y;
+        this.world.setCell(this.position, this);
+    }
 }
